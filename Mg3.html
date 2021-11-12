@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum3</title>
+</head>
+
+<body>
+    <label for="tema">Pilih Warna Tema : </label>
+    <select name="tema" id="tema" onchange="pilihan()">
+        <option value="putih">Putih</option>
+        <option value="hitam">Hitam</option>
+    </select>
+    <br>
+    <label for="warna">Pilih Warna Cherry MX : </label>
+    <select name="warna" id="warna" onchange="pilihan()">
+        <option value="biru">Biru</option>
+        <option value="cokelat">Cokelat</option>
+        <option value="merah">Merah</option>
+        <option value="hitam">Hitam</option>
+        <option value="hijau">Hijau</option>
+        <option value="putih">Putih</option>
+    </select>
+    <p id="keluaran"></p>
+    <label for="faktor">Masukan Angka : </label> 
+    <input type="text" nama="faktor" id="faktor">
+    <button type="submit" id="faktor" onclick="carifaktor()">Cari Faktorial</button>
+    <p id="hasil"></p>
+
+    <script>
+        function pilihan(){
+            var tema = document.getElementById("tema").value;
+            if(tema == "putih"){
+                document.body.style.background = "white";
+                document.body.style.color = "black";
+            }else if(tema == "hitam"){
+                document.body.style.background = "black";
+                document.body.style.color = "white";
+            }
+
+            var warna = document.getElementById("warna").value;
+            let kata;
+            if(warna == "biru"){
+                kata = "Karakteristik saklar taktil ini ditampilkan oleh umpan balik taktil dan terdengar. Berkat 'klik' yang mencolok, CHERRY MX Blue tidak hanya memberikan umpan balik yang nyata, tetapi juga akustik. Peralihan dengan teknologi klik CHERRY MX dengan demikian menetapkan dirinya sebagai pilihan yang berani.";
+            }else if(warna == "cokelat"){
+                kata = "Karakteristik saklar taktil ini ditandai dengan umpan balik yang nyata. Panduan tanpa suara dari CHERRY MX Brown melatih naluri yang pasti dan membantu bertindak secara taktis dan strategis.";
+            }else if(warna == "merah"){
+                kata = "Karakteristik switching linier dikombinasikan dengan resistensi pegas rendah memicu secara langsung. CHERRY MX Red adalah pilihan pertama untuk pemula di dunia keyboard mekanis. Teknologi CHERRY MX yang berjalan lancar memungkinkan sesi menulis dan bermain game yang seimbang.";
+            }else if(warna == "hitam"){
+                kata = "Karakteristik switching linier dikombinasikan dengan peningkatan gaya pegas memicu secara langsung. Berkat pegas spiral yang lebih kuat, CHERRY MX Black yang dicoba dan benar dengan lancar memindahkan kunci kembali ke posisi awal dan memberikan daya tahan yang diperlukan untuk sesi penulisan dan permainan yang panjang.";
+            }else if(warna == "hijau"){
+                kata = "CHERRY MX Green adalah versi yang sedikit dimodifikasi dari CHERRY MX Blue. Karakteristik saklar taktil ini ditampilkan oleh umpan balik yang nyata serta akustik. Setara hijau menawarkan kekuatan aktuasi meningkat dibandingkan dengan varian biru. Orang asing eksotis yang kuat adalah saklar populer bagi penggemar.";
+            }else if(warna == "putih"){
+                kata = "Sebagai sakelar taktil tanpa klik, CHERRY MX Clear adalah model saudara dari CHERRY MX Brown dan CHERRY MX Grey. Karena aktuasinya, itu adalah pusat yang sempurna untuk setara coklat dan abu-abu. Eksotis yang kuat adalah saklar populer bagi penggemar.";
+            }
+            document.getElementById("keluaran").innerHTML = kata;
+        }
+
+        function carifaktor(){
+            var faktor = document.getElementById("faktor").value;
+            var hasil = 1;
+            for(var i=1;i<=faktor;i++){
+                hasil = hasil * i;
+            }document.getElementById("hasil").innerHTML = hasil;
+        }
+    </script>
+</body>
+</html>
