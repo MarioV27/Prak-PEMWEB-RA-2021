@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+    <title>Praktikum4</title>
+</head>
+<body>
+    <h2>Masukan Data Mahasiswa</h2>
+    <form method="post" id="form_mhs">
+        <label>NIM</label>
+        <input type="number" nama="NIM"><br>
+        <label>Nama</label>
+        <input type="text" nama="nama"><br>
+        <label>Prodi</label>
+        <input type="text" nama="prodi"><br>
+        <label>Angkatan</label>
+        <input type="number" nama="angkatan"><br>
+    </form>
+    <button id="inputan">Tambahkan</button>
+    <br><br><h2>Tampilan Data</h2>
+    <div id="tampilkanprofil"></div>
+    <br><br><h2>Edit atau Hapus data</h2>
+    <form method="post" id="edit_mhs">
+        <label>NIM</label>
+        <input type="number" nama="NIM"><br>
+    </form>
+    <button id="editan">Edit</button>
+    <button id="menghapus">Hapus</button>
+
+    <script>
+        $(document).ready(function(){
+            $('#tampilkanprofil').load("profil.php");
+            $('#inputan').click(function(){
+                var data = $('#form_mhs').serialize();
+                $.ajax({
+                    type : 'POST',
+                    url : "input.php",
+                    data : data,
+                    cache : false,
+                    success : function(data) {
+                        $('#tampilkanprofil').load("profil.php");
+                    }
+                });
+            });
+            $('#editan').click(function(){
+                var data = $('#edit_mhs').serialize();
+                $.ajax({
+                    type : 'POST',
+                    url : "edit.php",
+                    data : data,
+                    cache : false,
+                    success : function(data) {
+                        $('#tampilkanprofil').load("profil.php");
+                    }
+                });
+            });
+            $('#menghapus').click(function(){
+                var data = $('#edit_mhs').serialize();
+                $.ajax({
+                    type : 'POST',
+                    url : "delete.php",
+                    data : data,
+                    cache : false,
+                    success : function(data) {
+                        $('#tampilkanprofil').load("profil.php");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+
+</html>
